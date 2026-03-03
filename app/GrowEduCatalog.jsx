@@ -1,6 +1,8 @@
-"use client"
+"use client";
 
 import { useState } from "react";
+import Link from "next/link";
+
 // ── Palette ──────────────────────────────────────────────────────────────────
 // Main:    #919682  (sage)
 // Dark:    #3D3D35  (deep greige)
@@ -246,7 +248,7 @@ const CourseCard = ({ course, index }) => {
             marginLeft: "4px", fontFamily: "'Jost', sans-serif",
           }}>USD</span>
         </div>
-        <button style={{
+        <Link href={`/courses/${course.title.toLowerCase().replace(/\s+/g, "-")}`} style={{
           background: hovered ? "#6B7057" : "#919682",
           color: "#FDFCF9",
           border: "none", borderRadius: "10px",
@@ -255,9 +257,10 @@ const CourseCard = ({ course, index }) => {
           letterSpacing: "0.06em", textTransform: "uppercase",
           transition: "background 0.2s ease",
           fontFamily: "'Jost', sans-serif",
+          textDecoration: "none", display: "inline-block",
         }}>
           Enroll
-        </button>
+        </Link>
       </div>
     </div>
   );
@@ -316,31 +319,23 @@ export default function GrowEduCatalog() {
         </div>
 
         <div style={{ display: "flex", gap: "32px", alignItems: "center" }}>
-          {["Courses", "Coaches", "About"].map(item => (
-            <span key={item} style={{
-              fontSize: "0.85rem", color: "#919682", cursor: "pointer",
-              fontWeight: 500, letterSpacing: "0.04em",
-              transition: "color 0.15s",
-            }}>{item}</span>
-          ))}
-          <button style={{
-            background: "transparent",
-            color: "#3D3D35", border: "1.5px solid #C4BFB0",
-            borderRadius: "9px", padding: "7px 20px",
-            fontSize: "0.82rem", fontWeight: 600, cursor: "pointer",
+          <Link href="/courses/the-clarity-framework" style={{ fontSize: "0.85rem", color: "#919682", fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none" }}>Courses</Link>
+          <Link href="/coach" style={{ fontSize: "0.85rem", color: "#919682", fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none" }}>Coaches</Link>
+          <span style={{ fontSize: "0.85rem", color: "#919682", cursor: "pointer", fontWeight: 500, letterSpacing: "0.04em" }}>About</span>
+          <Link href="/dashboard" style={{
+            background: "transparent", color: "#3D3D35",
+            border: "1.5px solid #C4BFB0", borderRadius: "9px",
+            padding: "7px 20px", fontSize: "0.82rem", fontWeight: 600,
             fontFamily: "'Jost', sans-serif", letterSpacing: "0.05em",
-            transition: "all 0.15s",
-          }}>
-            Sign In
-          </button>
-          <button style={{
+            textDecoration: "none", display: "inline-block",
+          }}>Sign In</Link>
+          <Link href="/dashboard" style={{
             background: "#919682", color: "#FDFCF9",
             border: "none", borderRadius: "9px", padding: "7px 20px",
-            fontSize: "0.82rem", fontWeight: 600, cursor: "pointer",
+            fontSize: "0.82rem", fontWeight: 600,
             fontFamily: "'Jost', sans-serif", letterSpacing: "0.05em",
-          }}>
-            Join Free
-          </button>
+            textDecoration: "none", display: "inline-block",
+          }}>Join Free</Link>
         </div>
       </nav>
 
@@ -569,16 +564,17 @@ export default function GrowEduCatalog() {
             Join thousands of coaches building sustainable, impactful practices.
           </p>
         </div>
-        <button style={{
+        <Link href="/dashboard" style={{
           background: "#3D3D35", color: "#EAE6DE",
           border: "none", borderRadius: "12px",
           padding: "16px 36px", fontSize: "0.875rem",
           fontWeight: 600, cursor: "pointer",
           letterSpacing: "0.08em", textTransform: "uppercase",
           fontFamily: "'Jost', sans-serif",
+          textDecoration: "none", display: "inline-block",
         }}>
           Start for Free →
-        </button>
+        </Link>
       </div>
 
       {/* ── FOOTER ── */}

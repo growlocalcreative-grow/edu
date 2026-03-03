@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 // ── Palette (consistent with GrowEduCatalog) ─────────────────
 // Main:    #919682  (sage)
@@ -230,7 +231,7 @@ const CourseProgressCard = ({ course }) => {
         borderTop: "1px solid #EAE6DE",
         display: "flex", justifyContent: "flex-end",
       }}>
-        <button style={{
+        <Link href={isComplete ? `/courses/${course.title.toLowerCase().replace(/\s+/g, "-")}` : `/learn/${course.title.toLowerCase().replace(/\s+/g, "-")}`} style={{
           background: isComplete ? "transparent" : (hovered ? "#6B7057" : "#919682"),
           color: isComplete ? "#919682" : "#FDFCF9",
           border: isComplete ? "1.5px solid #C4BFB0" : "none",
@@ -238,9 +239,10 @@ const CourseProgressCard = ({ course }) => {
           fontSize: "0.72rem", fontWeight: 600, cursor: "pointer",
           letterSpacing: "0.06em", textTransform: "uppercase",
           transition: "all 0.2s", fontFamily: "'Jost', sans-serif",
+          textDecoration: "none", display: "inline-block",
         }}>
           {isComplete ? "Review Course" : "Continue →"}
-        </button>
+        </Link>
       </div>
     </div>
   );
@@ -289,12 +291,8 @@ export default function StudentDashboard() {
           }}>Creative</span>
         </div>
         <div style={{ display: "flex", gap: "28px", alignItems: "center" }}>
-          {["Browse Courses", "My Learning"].map(item => (
-            <span key={item} style={{
-              fontSize: "0.85rem", color: "#919682",
-              cursor: "pointer", fontWeight: 500,
-            }}>{item}</span>
-          ))}
+          <Link href="/" style={{ fontSize: "0.85rem", color: "#919682", fontWeight: 500, textDecoration: "none" }}>Browse Courses</Link>
+          <Link href="/dashboard" style={{ fontSize: "0.85rem", color: "#919682", fontWeight: 500, textDecoration: "none" }}>My Learning</Link>
           {/* Avatar */}
           <div style={{
             width: "36px", height: "36px", borderRadius: "50%",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 // ── Course Data ───────────────────────────────────────────────
 const course = {
@@ -300,18 +301,14 @@ export default function CourseDetail() {
           }}>Creative</span>
         </div>
         <div style={{ display: "flex", gap: "28px", alignItems: "center" }}>
-          {["Browse Courses", "My Learning"].map(item => (
-            <span key={item} style={{
-              fontSize: "0.85rem", color: "#919682",
-              cursor: "pointer", fontWeight: 500,
-            }}>{item}</span>
-          ))}
-          <div style={{
+          <Link href="/" style={{ fontSize: "0.85rem", color: "#919682", fontWeight: 500, textDecoration: "none" }}>Browse Courses</Link>
+          <Link href="/dashboard" style={{ fontSize: "0.85rem", color: "#919682", fontWeight: 500, textDecoration: "none" }}>My Learning</Link>
+          <Link href="/dashboard" style={{
             width: "36px", height: "36px", borderRadius: "50%",
             background: "#919682", display: "flex", alignItems: "center",
             justifyContent: "center", color: "#FDFCF9",
-            fontSize: "0.85rem", fontWeight: 700, cursor: "pointer",
-          }}>JR</div>
+            fontSize: "0.85rem", fontWeight: 700, textDecoration: "none",
+          }}>JR</Link>
         </div>
       </nav>
 
@@ -657,16 +654,29 @@ export default function CourseDetail() {
                 {enrolled ? "✓ Enrolled!" : "Enroll Now"}
               </button>
 
-              <button style={{
+              {enrolled && (
+                <Link href="/learn/the-clarity-framework" style={{
+                  width: "100%", background: "#3D3D35",
+                  color: "#EAE6DE", border: "none",
+                  borderRadius: "12px", padding: "12px",
+                  fontSize: "0.82rem", fontWeight: 600, cursor: "pointer",
+                  letterSpacing: "0.06em", fontFamily: "'Jost', sans-serif",
+                  marginBottom: "12px", textDecoration: "none",
+                  display: "block", textAlign: "center",
+                }}>Start Learning →</Link>
+              )}
+
+              <Link href="/learn/the-clarity-framework" style={{
                 width: "100%", background: "transparent",
                 color: "#919682", border: "1.5px solid #C4BFB0",
                 borderRadius: "12px", padding: "12px",
                 fontSize: "0.82rem", fontWeight: 600, cursor: "pointer",
                 letterSpacing: "0.06em", fontFamily: "'Jost', sans-serif",
-                marginBottom: "20px",
+                marginBottom: "20px", textDecoration: "none",
+                display: "block", textAlign: "center",
               }}>
                 Try Free Preview
-              </button>
+              </Link>
 
               {/* Includes */}
               <div style={{

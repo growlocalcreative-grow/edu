@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 // ── Course & Lesson Data ──────────────────────────────────────
 const courseTitle = "The Clarity Framework";
@@ -653,7 +654,7 @@ export default function LessonViewer() {
           color: "#919682", cursor: "pointer", fontSize: "1rem", padding: "4px 8px",
         }}>☰</button>
 
-        <div style={{ display: "flex", alignItems: "baseline", gap: "5px" }}>
+        <Link href="/" style={{ display: "flex", alignItems: "baseline", gap: "5px", textDecoration: "none" }}>
           <span style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: "1.2rem", fontWeight: 700, color: "#EAE6DE",
@@ -662,7 +663,7 @@ export default function LessonViewer() {
             fontSize: "0.6rem", fontWeight: 600, color: "#6B7057",
             letterSpacing: "0.16em", textTransform: "uppercase",
           }}>Creative</span>
-        </div>
+        </Link>
 
         <span style={{ color: "rgba(145,150,130,0.4)" }}>›</span>
         <span style={{
